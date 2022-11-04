@@ -12,6 +12,8 @@ Installation is quite simple with this project. The user simply clones this repo
 
 Please follow the link to a video of the project's functionality being demonstrated. 
 
+Video link: https://youtu.be/ppJ--pbR9Bo
+
 ## Usage
 
 The first thing the user must do to use this project, is updating the information at the top of the index.js file with their own username & password. Once this is completed, the user runs "node index.js" to start the application. 

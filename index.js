@@ -73,7 +73,7 @@ const viewDepartments = () => {
 const viewRoles = () => {
     const query = `SELECT role.id, role.title AS Title, department.name AS Department, role.salary AS Salary
     FROM role LEFT JOIN department
-    ON department.id = role.deparment_id
+    ON department.id = role.deparment.id
     ORDER BY role.id`;
     db.query(query, (err, res) => {
         if (err) throw err;
