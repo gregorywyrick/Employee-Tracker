@@ -1,22 +1,25 @@
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
-const { extensions } = require('sequelize/types/utils/validator-extras');
 require('console.table');
+
+
 
 const db = mysql.createConnection(
     {
-        host: 'localHost',
+        host: 'localhost',
         user: 'root',
         password: 'gigem281',
         database: 'companyDB',
-    }
+    },
 );
 
 db.connect((err) => {
     if (err) throw err;
-    console.log('Welcome to `company_db');
+    console.log('Welcome to company_DB!');
     firstPrompt();
 });
+
+module.exports = db;
 
 const firstPrompt = () => {
     inquirer
@@ -68,8 +71,9 @@ const viewDepartments = () => {
 };
 
 const viewRoles = () => {
-    const query = `SELECT role.id, role.title AS Title, department.name AS Department, role.salary AS Salary 
-    FROM role LEFT JOIN department ON department.id = role.deparment_id
+    const query = `SELECT role.id, role.title AS Title, department.name AS Department, role.salary AS Salary
+    FROM role LEFT JOIN department
+    ON department.id = role.deparment_id
     ORDER BY role.id`;
     db.query(query, (err, res) => {
         if (err) throw err;
@@ -251,3 +255,5 @@ const exitDB = () => {
     console.log(`Exiting the Database`);
     process.exit();
 };
+
+module.exports = db;
